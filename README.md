@@ -14,7 +14,7 @@ This project combines **YOLOv2**([reference](https://arxiv.org/abs/1506.02640)) 
 ## Steps
 
 1. Download the code from this repository in .zip format or by running `git clone https://github.com/amiguelezs/seq_nms_yolo.git`
-2. If the .zip option was chosen in the previous step, unzip the file by running `unzip seq_nms_yolo-master.zip`
+2. If the .zip option was chosen in the previous step, unzip the file by running `unzip seq_nms_yolo-master.zip`. If the git clone option was chosen, change the name of the folder by running `mv seq_nms_yolo seq_nms_yolo-master`
 3. Enable execution permissions to the folder by running `chmod -R 755 seq_nms_yolo-master`
 4. Go to the directory by running `cd seq_nms_yolo-master`
 5. Activate anaconda by running `source activate`
