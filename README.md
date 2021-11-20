@@ -31,7 +31,7 @@ This project combines **YOLOv2**([reference](https://arxiv.org/abs/1506.02640)) 
 14. Return to the previous folder by running `cd ..`
 15. Run the next command to generate output images in video/output folder: `python yolo_seqnms.py`
 16. If you want to reconstruct a video from these output images, you can go to the video folder and run `python img2video.py -i output`
-17. You will see output.mp4 file with detection results in video folder and detection frames in video/output
+17. The output.mp4 file with detection results in video folder has been obtained using the detection frames in video/output
 
 ## Use Yolov2 without Seq-NMS
 
