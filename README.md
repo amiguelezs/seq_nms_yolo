@@ -36,7 +36,7 @@ This project combines **YOLOv2**([reference](https://arxiv.org/abs/1506.02640)) 
 ## Use Yolov2 without Seq-NMS
 
 In order to deactivate Seq-NMS post-processing add to the `python yolo_seqnms.py` execution `--seq_nms 0` flag.
-If we want to deactivate the NMS delating non relevant detections add to the execution `--nms 0` flag.
+To deactivate the NMS delating non relevant detections add to the execution `--nms 0` flag.
 
 Final execution for Yolov2 only: `python yolo_seqnms.py --seq_nms 0 --nms 0`
 
