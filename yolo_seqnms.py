@@ -11,6 +11,7 @@ import scipy.misc
 import yolo_detection
 import visualization_utils as vis_util
 import label_map_util
+import argparse
 
 CLASSES=("__background__","person","bicycle","car","motorcycle","airplane","bus","train","truck","boat","traffic light","fire hydrant","stop sign","parking meter","bench","bird","cat","dog","horse","sheep","cow","elephant","bear","zebra","giraffe","backpack","umbrella","handbag","tie","suitcase","frisbee","skis","snowboard","sports ball","kite","baseball bat","baseball glove","skateboard","surfboard","tennis racket","bottle","wine glass","cup","fork","knife","spoon","bowl","banana","apple","sandwich","orange","broccoli","carrot","hot dog","pizza","donut","cake","chair","couch","potted plant","bed","dining table","toilet","tv","laptop","mouse","remote","keyboard","cell phone","microwave","oven","toaster","sink","refrigerator","book","clock","vase","scissors","teddy bear","hair drier","toothbrush")
 CONF_THRESH = 0.5
@@ -199,11 +200,16 @@ def deleteLink(dets,links, rootindex, maxpath,thesh):
                     if delete_ind in priorbox:
                         priorbox.remove(delete_ind)
 
-def dsnms(res):
+##def dsnms(res):
+def dsnms(res, nms_flag=True, seq_nms_flag=True):
     dets=createInputs(res)
-    links=createLinks(dets)
-    maxPath(dets,links)
-    NMS(dets)
+    ##links=createLinks(dets)
+    ##maxPath(dets,links)
+    ##NMS(dets)
+    if seq_nms_flag:
+        links=createLinks(dets)
+        maxPath(dets,links)
+        NMS(dets)
     boxes=[[] for i in dets[0]]
     classes=[[] for i in dets[0]]
     scores=[[] for i in dets[0]]
@@ -223,7 +229,8 @@ def dsnms(res):
     for cls_id, det_cls in enumerate(dets):
         for frame_id, frame in enumerate(det_cls):
             for box_id, box in enumerate(frame):
-                if box[4] >= CONF_THRESH:
+                ##if box[4] >= CONF_THRESH:
+                if box[4] >= CONF_THRESH or not nms_flag:
                     ymin = box[1]
                     xmin = box[0]
                     ymax = box[3]
@@ -254,6 +261,11 @@ def get_labeled_image(image_path, path_to_labels, num_classes, boxes, classes, s
     return image_process
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description = "Yolo_seq-NMS")
+    parser.add_argument('--seq_nms', type=int, default=1, help="If 0 the seq-NSM algorithm won't be apply.")
+    parser.add_argument('--nms', type=int, default=1, help="If 0 the NSM algorithm won't be apply.")
+    args = parser.parse_args()
+
     # load image
     load_begin=time.time()
     pkllistfile=open(os.path.join('video', 'pkllist.txt'))
@@ -271,7 +283,8 @@ if __name__ == "__main__":
 
     # nms
     nms_begin=time.time()
-    boxes, classes, scores = dsnms(res)
+    ##boxes, classes, scores = dsnms(res)
+    boxes, classes, scores = dsnms(res, nms_flag=args.nms, seq_nms_flag=args.seq_nms)
     nms_end=time.time()
     print 'total nms: {:.4f}s'.format(nms_end - nms_begin)
 
