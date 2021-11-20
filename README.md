@@ -21,9 +21,10 @@ This project combines **YOLOv2**([reference](https://arxiv.org/abs/1506.02640)) 
 6. Create the virtual environment using the available file lab2_DL4VSP.yml by running `conda env create -f lab2_DL4VSP.yml`
 7. Activate the environment by running `conda activate lab2_DL4VSP`
 8. Modify the Makefile acording to your environment. By default:
-   * GPU=1		   # 0 if your pc doesn't support CUDA
-   * CUDNN=0		# 1 if your pc does support CUDNN
-   * OPENCV=1	   # 0 if your pc doesn't support OPENCV
+   * GPU=1      # 0 if your pc doesn't support CUDA
+   * CUDNN=0    # 1 if your pc does support CUDNN
+   * OPENCV=1   # 0 if your pc doesn't support OPENCV
+   * PKG_CONFIG_PATH=../.conda/envs/lab2_DL4VSP/lib/pkgconfig # Path to the Conda environment
 10. Make the project running the Makefile by running `make`
 11. Download yolo.weights and tiny-yolo.weights by running `wget https://pjreddie.com/media/files/yolo.weights` and `wget https://pjreddie.com/media/files/yolov2-tiny-voc.weights`
 12. Go to the video folder by running `cd video`
