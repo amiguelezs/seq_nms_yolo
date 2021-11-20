@@ -20,7 +20,7 @@ This project combines **YOLOv2**([reference](https://arxiv.org/abs/1506.02640)) 
 5. Activate anaconda by running `source activate`
 6. Create the virtual environment using the available file lab2_DL4VSP.yml by running `conda env create -f lab2_DL4VSP.yml`
 7. Activate the environment by running `conda activate lab2_DL4VSP`
-8. Modify the Makefile acording to you environment. By default:
+8. Modify the Makefile acording to your environment. By default:
    * GPU=1		   # 0 if your pc doesn't support CUDA
    * CUDNN=0		# 1 if your pc does support CUDNN
    * OPENCV=1	   # 0 if your pc doesn't support OPENCV
